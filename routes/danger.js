@@ -63,7 +63,7 @@ function danger(app, db, fcm, moment, request) {
                                     fcm.send(push_data, (err, responses) => {
                                         if (err) {
                                             console.log('fcm push Error => ' + err)
-                                            res.send(500, {success:false, message:"알림발송을 실패했습니다."})
+                                            //res.send(500, {success:false, message:"알림발송을 실패했습니다."})
                                         }
                                         else {
                                             console.log('FCM 발송완료')
