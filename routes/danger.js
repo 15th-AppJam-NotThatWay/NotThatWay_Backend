@@ -44,10 +44,13 @@ function danger(app, db, fcm, moment, request) {
                         else if(data){
                             console.log("mom"+dataa)
                             var time = moment().format('YYYY년MM월DD일 Ah시mm분ss초')
+                            time = time.split(" ")
+                            time = time[0]+'\n'+time[1]
+                            console.log(time)
                             var danger_save = new db.Danger({
                                 latitude : body.latitude,
                                 longitude : body.longitude,
-                                time : time.split(" "),
+                                time : time,
                                 address : json.result.items[0].address,
                                 id : dataa.id
                             })
