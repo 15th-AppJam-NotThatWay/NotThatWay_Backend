@@ -108,21 +108,25 @@ function danger(app, db, fcm, moment, request) {
     app.post('/test', (req, res)=>{
         var body = req.body;
         var push_data = {
-            registration_ids: body.fcmtoken,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            registration_ids: [body.fcmtoken],
             priority: "high",
             restricted_package_name: "rankhep.com.notthatway",
-            data: {"title" : "이(가) 위험지역에 접근했습니다!" , "text" :"이(가) 위험지역에 접근했습니다!\n주소지 : "}
+            data: {"title" : "위험지역에접근했습니다", "text" :"이위험지역에접근했습니다"}
         }
+
         console.log(push_data)
         fcm.send(push_data, (err, responses) => {
             if (err) {
                 console.log('fcm push Error => ' + err)
-                res.send(500, {success:false, message:"알림발송을 실패했습니다."})
+                res.status(500).send({success:false, message:"알림발송을 실패했습니다."})
             }
             else {
                 console.log('FCM 발송완료')
                 console.log(responses)
-                res.send(200, {success:true, message:"알림 발송을 마쳤습니다"})
+                res.status(200).send({success:true, message:"알림 발송을 마쳤습니다"})
             }
         })
     })
