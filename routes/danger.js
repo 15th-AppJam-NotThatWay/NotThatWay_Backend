@@ -43,7 +43,7 @@ function danger(app, db, fcm, moment, request) {
                         if(err) throw err
                         else if(data){
                             console.log("mom"+dataa)
-                            var time = moment().format('YYYY년MM월DD일 Ah시mm분ss초')
+                            var time = moment().format('MM월DD일 Ah시mm분')
                             time = time.split(" ")
                             time = time[0]+'\n'+time[1]
                             console.log(time)
