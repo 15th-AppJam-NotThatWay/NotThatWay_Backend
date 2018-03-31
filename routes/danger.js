@@ -26,6 +26,8 @@ function danger(app, db, fcm, moment, request) {
         request(options, function (error, response, reqdata) {
             if (error) throw new Error(error);
             json = JSON.parse(reqdata)
+            console.log(json)
+            console.log(body)
             console.log(JSON.stringify(json.result.items[0].address));
 
             db.User.findOne({
@@ -97,6 +99,9 @@ function danger(app, db, fcm, moment, request) {
                             if(err) throw err
                             else if(data[0]){
                                 res.send(200, data)
+                            }
+                            else{
+                                res.send(200, [])
                             }
                         })
                     }
