@@ -54,7 +54,10 @@ function danger(app, db, fcm, moment, request) {
                                 if(err) throw err
                                 else{
                                     var push_data = {
-                                        registration_ids: dataa.fcmtoken,
+                                        headers: {
+                                            'Content-Type': 'application/json',
+                                        },
+                                        registration_ids: [dataa.fcmtoken],
                                         priority: "high",
                                         restricted_package_name: "rankhep.com.notthatway",
                                         data: {"title" : tmpname+"이(가) 위험지역에 접근했습니다!" , "text" : tmpname+"이(가) 위험지역에 접근했습니다!\n주소지 : "+json.result.items[0].address}
