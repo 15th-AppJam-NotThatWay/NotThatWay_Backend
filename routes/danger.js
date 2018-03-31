@@ -105,7 +105,13 @@ function danger(app, db, fcm, moment, request) {
                             }
                         })
                     }
+                    else{
+                        res.send(200, [])
+                    }
                 })
+            }
+            else {
+                res.send(200, [])
             }
         })
     })
