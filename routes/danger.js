@@ -46,7 +46,7 @@ function danger(app, db, fcm, moment, request) {
                             var danger_save = new db.Danger({
                                 latitude : body.latitude,
                                 longitude : body.longitude,
-                                time : moment().format('YYYY년 MM월 DD일 A h시mm분ss초'),
+                                time : moment().format('YYYY년 MM월 DD일 A h시mm분ss초')+'\n',
                                 address : json.result.items[0].address,
                                 id : dataa.id
                             })
